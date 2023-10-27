@@ -1,0 +1,1119 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Form</title>
+    
+    <style>
+	    body {
+			  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+			  font-weight: 300;
+			}
+			.example-wrap {
+			  padding: 50px 20px 0 20px;
+			}
+		</style>
+
+    <link rel='stylesheet' href='./styles/fancy-styles.css' />
+
+    <head>
+      <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+
+      <header>Data Feed - Questionnaire</header>
+      
+      <div class="feed-dropdown">
+        <label for="feed">Feed:</label>
+        <select id="feed" class="fancy-field">
+          <option value="Store">Store</option>
+          <option value="Item">Item</option>
+          <option value="Price">Price</option>
+          <option value="Cost">Cost</option>
+          <option value="Promotion">Promotion</option>
+        </select>
+      </div>
+          </body>
+
+  <!-- </head>
+  <body>
+    <div id='root'>
+    </div>
+    <script src="/static/bundle.js"></script>
+  </body>
+  <head>
+    <link rel="stylesheet" type="text/css" href="fancy-styles.css">
+  </head> -->
+  
+  <body>
+    <div id="root"></div>
+    <table id="itemFeedTable" >
+      <!-- <caption>Item Feed - Questionnaire</caption> -->
+      <thead>
+        <tr>
+          <th>Item Feed - Questionnaire</th>
+          <th colspan="3" align="center">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>How often can/will you send a list of items?</td>
+          <td><input type="radio" name="sendFrequency" value="Daily" id="daily"> Daily</td>
+          <td><input type="radio" name="sendFrequency" value="Weekly" id="weekly"> Weekly</td>
+          <td><input type="radio" name="sendFrequency" value="Monthly" id="monthly"> Monthly</td>
+        </tr>
+        <tr>
+          <td>Mode of data exchange</td>
+          <td colspan="3" align="center">
+            <input type="radio" name="dataExchange" value="File" id="file"> File
+            <input type="radio" name="dataExchange" value="API" id="api"> API
+          </td> 
+          
+        </tr>        
+        <tr>
+          <td>How many items do you carry overall?</td>
+          <td colspan="3" align="center"><input type="text" name="answer"></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <table id="fileFormatTable">
+      <!-- <caption>File format</caption> -->
+      <thead>
+        <tr>
+          <th colspan="3" align="center">File format</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>How many files which contain the item information?</td>
+          <td colspan="2" align="center"><input  type="text" name="itemCount" id="itemCount" class="custom-input"></td>
+        </tr>
+        
+        <tr>
+          <td>If it is more than one api, describe how to link the files (Typically, item_code or item_id is the key to connect other files)</td>
+          <td colspan="2" align="center"><input type="text" name="itemCount" id="itemCount"></td>
+        </tr>
+        <tr>
+          <td>What is the delimiter</td>
+          <td colspan="2" align="center">
+            <select name="itemDelimiter">
+              <option value=",">,</option>
+              <option value=".">.</option>
+              <option value="||">||</option>
+              <option value="+">+</option>
+            </select>
+          </td>
+
+        </tr>
+        <tr>
+          <td>Does the file contain header?</td>
+          <td>
+            <input type="radio" name="header" value="Yes"> Yes
+            <input type="radio" name="header" value="No"> No
+          </td>
+        </tr>
+        <tr>
+          <td>Does the file contain footer record describing the number of rows?</td>
+          <td><input type="radio" name="footerRecord" value="Yes" id="yes"> Yes
+          <input type="radio" name="footerRecord" value="No" id="no"> No</td>
+        </tr>
+        
+        <tr>
+          <td>Is it encrypted?</td>
+          <td><input type="radio" name="footerRecord" value="Yes" id="yes"> Yes
+          <input type="radio" name="footerRecord" value="No" id="no"> No</td>
+        </tr>
+        <tr>
+          <td>Please provide the feed layout / order of the fields</td>
+          <td colspan="2" align="center"><input type="text" name="itemCount" id="itemCount"></td>
+        </tr>
+        <tr>
+          <td>What is the name of the sample file? Please state the name with the file extension e.g. item.csv, item.txt, item.xlsx</td>
+          <td colspan="2" align="center">
+            <select name="fileExtention">
+              <option value="csv">.csv</option>
+              <option value="xlsx">.xlsx</option>
+              <option value="txt">.txt</option>
+            </select>
+          </td>
+        </tr>        
+        <tr>
+          <td>Do you have delta item feed which will only contain the changes?</td>
+          <td><input type="radio" name="footerRecord" value="Yes" id="yes"> Yes
+          <input type="radio" name="footerRecord" value="No" id="no"> No</td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="apiFormatTable">
+      <!-- <caption>API format</caption> -->
+      <thead>
+        <tr>
+          <th colspan="3" align="center">API format</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>How many APIs do you have for fetching item information?</td>
+          <td colspan="2" align="center">
+            <input type="text" name="apisCount" id="apisCount">
+          </td>
+        </tr>
+        <tr>
+          <td>If it is more than one file, describe how to join multiple data points (item_code or item_id is the key)</td>
+          <td colspan="2" align="center">
+            <input type="text" name="dataJoinDescription" id="dataJoinDescription">
+          </td>
+        </tr>
+        <tr>
+          <td>Provide the API details (endpoint, headers, request and response formats)</td>
+          <td colspan="2" align="center">
+            <input type="text" name="apiDetails" id="apiDetails">
+          </td>
+        </tr>
+        <tr>
+          <td>What authentication mechanism does the API use (e.g., API keys, OAuth, JWT)?</td>
+          <td colspan="2" align="center">
+            <input type="text" name="authMechanism" id="authMechanism">
+          </td>
+        </tr>
+        <tr>
+          <td>How many items can be fetched per request?</td>
+          <td colspan="2" align="center">
+            <input type="text" name="itemsPerRequest" id="itemsPerRequest">
+          </td>
+        </tr>
+        <tr>
+          <td>Is there an API which provides only delta information about the changes in items?</td>
+          <td>
+            <input type="radio" name="deltaInformation" value="Yes" id="yesDelta">
+            <label for="yesDelta">Yes</label>
+            <input type="radio" name="deltaInformation" value="No" id="noDelta">
+            <label for="noDelta">No</label>
+          </td>
+        </tr>
+      </tbody>
+      
+    </table>
+    <table id="productInformationTable" >
+      <!-- <caption>Product Information</caption> -->
+      <thead>
+        <tr>
+          <th colspan="2" align="center">Product Information</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Enter the product hierarchy from topmost product level (Example Department or Major Category)</td>
+          <td><input type="text" name="itemCodeLength"></td>
+        </tr>
+        <tr>
+          <td>How is an item uniquely identified? NOTE: This will be used to identify the item across all other feeds like price, cost, transactions (t-logs), etc.</td>
+          <td>
+            <select name="itemIdentification">
+              <option value="UPC">UPC</option>
+              <option value="UPCItemCode">UPC + Item Code</option>
+              <option value="ItemCode">Item Code</option>
+            </select>
+          </td>
+          
+          
+        </tr>
+        <tr>
+          <td>Is the Retailer Item Code numeric or is it alpha-numeric?</td>
+          <td>
+            <select name="retailerItemCodeType">
+              <option value="numeric">Numeric</option>
+              <option value="alphaNumeric">AlphaNumeric</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>What is the length of your internal item code / Retailer Item Code?</td>
+          <td><input type="text" name="itemCodeLength"></td>
+        </tr>
+        <tr>
+          <td>What UPC standard do you follow?</td>
+          <td>
+            <select name="upcStandard">
+              <option value="UPCA">11 or 12 digits : UPC-A</option>
+              <option value="EAN13">13 digits: EAN-13</option>
+              <option value="GTIN14">14 digits: GTIN-14</option>
+            </select>
+          </td>
+          
+        </tr>
+        <tr>
+          <td>Code length i.e. check digit present or absent</td>
+          <td>
+            <input type="radio" name="checkDigit" value="NoCheckDigit"> 11 (NO check digit at the end)
+            <input type="radio" name="checkDigit" value="WithCheckDigit"> 12 (Last / rightmost / 12th digit is the check digit)
+          </td>
+        </tr>
+        <tr>
+          <td>We have observed that some systems delete zeros from the left side of numbers. If you'll be supplying IAN/EAN/GTIN -13 codes is it safe to assume that shorter codes need to be left-padded with zeros?</td>
+          <td><input type="text" name="zeroPaddingAssumption"></td>
+        </tr>
+        <tr>
+          <td>If there is a fixed length left-padding using 0s then what is the length of this left-padding?</td>
+          <td><input type="text" name="zeroPaddingLength"></td>
+        </tr>
+        <tr>
+          <td>Are the size and UOM under the same field / column?</td>
+          <td><input type="radio" name="sizeAndUOM" value="Yes"> Yes <input type="radio" name="sizeAndUOM" value="No"> No</td>
+        </tr>
+        <tr>
+          <td>Specify the field / column for the UOM.</td>
+          <td><input type="text" name="uomField"></td>
+        </tr>
+        <tr>
+          <td>Specify the field / column for the size (If the size and the UOM are under the same field / column then list that name here).</td>
+          <td><input type="text" name="sizeField"></td>
+        </tr>
+        <tr>
+          <td>Do you use any set procedure to abbreviate your item names? E.g.: Dropping all vowels?</td>
+          <td><input type="radio" name="abbreviateNames" value="Yes"> Yes <input type="radio" name="abbreviateNames" value="No"> No</td>
+        </tr>
+        <tr>
+          <td>If yes, do you have a friendly description as well? Specify field / column name</td>
+          <td><input type="text" name="abbreviateDescriptionField"></td>
+        </tr>
+        <tr>
+          <td>Enter the number of additional item attributes other than size, UOM, UPC, item code, PL indicator, pack.</td>
+          <td><input type="text" name="additionalAttributesCount"></td>
+        </tr>
+        <tr>
+          <td>Specify the additional item attributes.</td>
+          <td><input type="text" name="additionalAttributes"></td>
+        </tr>
+        <tr>
+          <td>Do you have more than one item code or item id for an item?</td>
+          <td><input type="radio" name="multipleItemCodes" value="Yes"> Yes <input type="radio" name="multipleItemCodes" value="No"> No</td>
+        </tr>
+        <tr>
+          <td>If yes, describe the other item numbers or codes and specify which one is primary</td>
+          <td><input type="text" name="otherItemCodesDescription"></td>
+        </tr>
+        <tr>
+          <td>Does your file contain both active and inactive items?</td>
+          <td><input type="radio" name="activeInactiveItems" value="Yes"> Yes <input type="radio" name="activeInactiveItems" value="No"> No</td>
+        </tr>
+        <tr>
+          <td>If yes, specify the field name and values which tell whether the item is active or inactive</td>
+          <td><input type="text" name="activeInactiveField"></td>
+        </tr>
+        <tr>
+          <td>Specify the field/column for brand</td>
+          <td><input type="text" name="brandField"></td>
+        </tr>
+        <tr>
+          <td>Specify the field/column for manufacturer</td>
+          <td><input type="text" name="manufacturerField"></td>
+        </tr>
+        <tr>
+          <td>Specify the field/column for LIR Name</td>
+          <td><input type="text" name="lirNameField"></td>
+        </tr>
+        <tr>
+          <td>Specify the field/column for Shipper flag</td>
+          <td><input type="text" name="shipperFlagField"></td>
+        </tr>
+        <tr>
+          <td>Specify the field/column for prepriced indicator</td>
+          <td><input type="text" name="prepricedIndicatorField"></td>
+        </tr>
+        <tr>
+          <td>How to identify private label items? Specify the column and value to mark private label items</td>
+          <td><input type="text" name="privateLabelField"></td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="storeinformationTable">
+      <thead>
+        <tr>
+          <th colspan="3" align="center">Store Information</th>
+        </tr>
+      </thead>
+      <tbody>
+
+    <tr>
+          <td>What is your location hierarchy/How are the stores grouped</td>
+          <td colspan="2" align="center">
+            <select name="zoneOrChain">
+              <option value="Zone">Zone</option>
+              <option value="Chain">Chain</option>
+            </select>
+          </td>
+    </tr>
+
+    <tr>
+      <td>Which fields are used to map them</td>
+      <td colspan="2" align="center">
+        <input type="text" name="fieldsMapping" id="fieldsMapping">
+      </td>
+    </tr>
+    
+
+    <tr>
+      <td>What is the data type of that identifier</td>
+      <td colspan="2" align="center">
+        <select name="identifier">
+          <option value="Number">Number</option>
+          <option value="String 00">String 00</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td>What is the data type of your store number</td>
+      <td colspan="2" align="center">
+        <select name="storenumber">
+          <option value="Number">Number</option>
+          <option value="String">String</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Do you provide the store Name?</td>
+      <td colspan="2" align="center">
+        <input type="radio" name="storeName" value="Yes" id="storeNameYes">
+        <label for="storeNameYes">Yes</label>
+        <input type="radio" name="storeName" value="No" id="storeNameNo">
+        <label for="storeNameNo">No</label>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Do you provide the store address?</td>
+      <td colspan="2" align="center">
+        <input type="radio" name="storeAddress" value="Yes" id="storeAddressYes">
+        <label for="storeAddressYes">Yes</label>
+        <input type="radio" name="storeAddress" value="No" id="storeAddressNo">
+        <label for="storeAddressNo">No</label>
+      </td>
+    </tr>
+
+    <tr>
+      <td>How many lines store address do you have?</td>
+      <td colspan="2" align="center">
+        <input type="text" name="storeAddressLines" id="storeAddressLines">
+      </td>
+    </tr>
+    <tr>
+      <td>Do you provide zip code?If yes,What is the format of zip code(does it have any special character like -)</td>
+      <td colspan="2" align="center">
+        <input type="radio" name="zipCode" value="Yes" id="zipCodeYes">
+        <label for="zipCodeYes">Yes</label>
+        <input type="radio" name="zipCode" value="No" id="zipCodeNo">
+        <label for="zipCodeNo">No</label>
+        <input type="text" name="zipCodeFormat" id="zipCodeFormat" placeholder="eg:10001" style="display: none;">
+      </td>
+    </tr>
+
+  
+    
+    <tr>
+      <td>Do you provide city name where the store is located?Is the city name abbreviated or full name is provided?</td>
+      <td colspan="2" align="center">
+        <input type="radio" name="cityNameProvided" value="Yes" id="cityNameYes">
+        <label for="cityNameYes">Yes</label>
+        <input type="radio" name="cityNameProvided" value="No" id="cityNameNo">
+        <label for="cityNameNo">No</label>
+        <input type="radio" name="cityNameType" value="Full" id="cityNameFull" style="display: none;">
+        <label for="cityNameFull" id="cityNameFulllabel" style="display: none;">Full</label>
+        <input type="radio" name="cityNameType" value="Abbreviated" id="cityNameAbbreviated" style="display: none;">
+        <label for="cityNameAbbreviated" id="cityNameAbbreviatedlabel" style="display: none;">Abbreviated</label>
+        <input type="text" name="cityFullName" id="cityFullName" placeholder="eg:New York" style="display: none;" >
+        <input type="text" name="cityAbbreviatedName" id="cityAbbreviatedName" placeholder="eg:NY" style="display: none;">
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>Do you provide store open date? if yes in what format</td>
+      <td colspan="2" align="center">
+        <input type="radio" name="storeOpenDateProvided" value="Yes" id="storeOpenDateYes">
+        <label for="storeOpenDateYes">Yes</label>
+        <input type="radio" name="storeOpenDateProvided" value="No" id="storeOpenDateNo">
+        <label for="storeOpenDateNo">No</label>
+        <input type="text" name="storeOpenDateFormat" id="storeOpenDateFormat" style="display: none;" placeholder="MM-DD-YYYY">
+      </td>
+    </tr>
+    
+    <tr>
+      <td>Do you provide store close date? If yes, in what format</td>
+      <td colspan="2" align="center">
+        <input type="radio" name="storeCloseDateProvided" value="Yes" id="storeCloseDateYes">
+        <label for="storeCloseDateYes">Yes</label>
+        <input type="radio" name="storeCloseDateProvided" value="No" id="storeCloseDateNo">
+        <label for="storeCloseDateNo">No</label>      
+        <input type="text" name="storeCloseDateFormat" id="storeCloseDateFormat" style="display: none;" placeholder="MM-DD-YYYY">
+      </td>
+    </tr>
+    <tr>
+      <td>Do you provide store manager details?</td>
+      <td colspan="2" align="center">
+        <input type="radio" name="storeManagerDetails" value="Yes" id="storeManagerDetailsYes">
+        <label for="storeManagerDetailsYes">Yes</label>
+        <input type="radio" name="storeManagerDetails" value="No" id="storeManagerDetailsNo">
+        <label for="storeManagerDetailsNo">No</label>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>Do you provide division detail for all stores? If yes, then in what format</td>
+      <td colspan="2" align="center">
+        <input type="radio" name="divisionDetailsProvided" value="Yes" id="divisionDetailsYes">
+        <label for="divisionDetailsYes">Yes</label>
+        <input type="radio" name="divisionDetailsProvided" value="No" id="divisionDetailsNo">
+        <label for="divisionDetailsNo">No</label>
+        <select name="divisionFormat" id="divisionFormat" style="display: none;">
+          <option value="Name">Name</option>
+          <option value="Number">Number</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Do you provide division manager details</td>
+      <td colspan="2" align="center">
+        <input type="radio" name="divisionManagerDetails" value="Yes" id="divisionManagerDetailsYes">
+        <label for="divisionManagerDetailsYes">Yes</label>
+        <input type="radio" name="divisionManagerDetails" value="No" id="divisionManagerDetailsNo">
+        <label for="divisionManagerDetailsNo">No</label>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>Do you provide district detail for all stores? If yes, in what format</td>
+      <td colspan="2" align="center">
+        <input type="radio" name="districtDetailsProvided" value="Yes" id="districtDetailsYes">
+        <label for="districtDetailsYes">Yes</label>
+        <input type="radio" name="districtDetailsProvided" value="No" id="districtDetailsNo">
+        <label for="districtDetailsNo">No</label>
+        <select name="districtFormat" id="districtFormat" style="display: none;">
+          <option value="Name">Name</option>
+          <option value="Number">Number</option>
+        </select>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>Do you provide district manager details?</td>
+      <td>
+        <input type="radio" name="districtManagerDetails" value="Yes" id="districtManagerYes">
+        <label for="districtManagerYes">Yes</label>
+        <input type="radio" name="districtManagerDetails" value="No" id="districtManagerNo">
+        <label for="districtManagerNo">No</label>
+      </td>
+    </tr>
+    <tr>
+      <td>Do you provide region detail for all stores? If yes, in what format</td>
+      <td colspan="2" align="center">
+        <input type="radio" name="regionDetailsProvided" value="Yes" id="regionDetailsYes">
+        <label for="regionDetailsYes">Yes</label>
+        <input type="radio" name="regionDetailsProvided" value="No" id="regionDetailsNo">
+        <label for="regionDetailsNo">No</label>
+        <select name="regionFormat" id="regionFormat" style="display: none;">
+          <option value="Name">Name</option>
+          <option value="Number">Number</option>
+        </select>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>Do you provide region manager details?</td>
+      <td>
+        <input type="radio" name="regionManagerDetails" value="Yes" id="regionManagerYes">
+        <label for="regionManagerYes">Yes</label>
+        <input type="radio" name="regionManagerDetails" value="No" id="regionManagerNo">
+        <label for="regionManagerNo">No</label>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table id="priceinformationTable">
+  <thead>
+    <tr>
+      <th colspan="3" align="center">Price Information</th>
+    </tr>
+  </thead>
+  <tbody>
+
+<tr>
+      <td>At what level will you provide the prices for an item </td>
+      <td colspan="2" align="center">
+        <select name="itemlevelprice">
+  <option value="Chainprice">Chain</option>
+          <option value="Zoneprice">Zone</option>
+          <option value="Storeprice">Store</option>
+        </select>
+      </td>
+</tr>
+
+<tr>
+  <td>What is the data type for the field that provides the level information </td>
+  <td colspan="2" align="center">
+    <input type="text" name="pricefieldsMapping" id="pricefieldsMapping">
+  </td>
+</tr>
+
+<tr>
+      <td>What is the pricing structure that you are following .(Will the prices be sent for week,day,month,quarter?)</td>
+      <td colspan="2" align="center">
+        <select name="pricingstructure">
+  <option value="priweek">week</option>
+          <option value="priday">day</option>
+          <option value="primonth">month</option>
+    <option value="priquarter">quarter</option>
+        </select>
+      </td>
+</tr>
+
+
+<tr>
+  <td>What is the date format provided for the price effective date </td>
+  <td colspan="2" align="center">
+    <select name="dateformat">
+      <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+      <option value="MM/DD/yyyy HH24:mi:ss">MM/DD/yyyy HH24:mi:ss</option>
+  <option value="yyyy-MM-dd">yyyy-MM-dd</option>
+    </select>
+  </td>
+</tr>
+
+
+<tr>
+  <td>Does the feed contain unit price?</td>
+  <td colspan="2" align="center">
+    <input type="radio" name="unitprice" value="Yes" id="unitpriceYes">
+    <label for="unitpriceYes">Yes</label>
+    <input type="radio" name="unitprice" value="No" id="untipriceNo">
+    <label for="unitpriceNo">No</label>
+  </td>
+</tr>
+
+
+
+<tr>
+  <td>Which field provides the unit information?</td>
+  <td colspan="2" align="center">
+    <input type="text" name="unitinformation" id="unitinformation">
+  </td>
+</tr>
+
+
+<tr>
+  <td>Does the feed contain future prices?</td>
+  <td colspan="2" align="center">
+    <input type="radio" name="futureprices" value="Yes" id="futurepricesYes">
+    <label for="futurepricesYes">Yes</label>
+    <input type="radio" name="futureprices" value="No" id="futurepricesNo">
+    <label for="futurepricesNo">No</label>
+  </td>
+</tr>
+
+
+<tr>
+  <td>Which field provides the information for future price</td>
+  <td colspan="2" align="center">
+    <input type="text" name="futurepriceinfo" id="futurepriceinfo">
+  </td>
+</tr>
+
+<tr>
+  <td>Prices for how many future weeks will you provide? </td>
+  <td colspan="2" align="center">
+    <select name="futureweeksprice">
+      <option value="one">One</option>
+      <option value="two">Two</option>
+  <option value="three">Three</option>
+    </select>
+  </td>
+</tr>
+
+<tr>
+  <td>Do You provide Clearance/Markdown Price in the same feed? If yes, how are the prices differentiated (Field to identify that it is a regular price/Clearance file)</td>
+  <td colspan="2" align="center">
+    <input type="radio" name="Clearanceormarkdown" value="Yes" id="ClearanceormarkdownYes">
+    <label for="ClearanceormarkdownYes">Yes</label>
+    <input type="radio" name="Clearanceormarkdown" value="No" id="ClearanceormarkdownNo">
+    <label for "ClearanceormarkdownNo">No</label>
+    <select name="Clearanceormarkdowndrop" style="display: none;">
+      <option value="regularprice">Regular price</option>
+      <option value="Clearance">Clearance</option>
+    </select>
+  </td>
+</tr>
+
+
+
+<tr>
+  <td>What additional information do you provide in the price feed</td>
+  <td colspan="2" align="center">
+    <input type="text" name="additionalinformationprice" id="additionalinformationprice">
+  </td>
+</tr>
+
+<tr>
+  <td>What is the purpose of those fields?</td>
+  <td colspan="2" align="center">
+    <input type="text" name="purposeadditionalinformationprice" id="purposeadditionalinformationprice">
+  </td>
+</tr>
+</table>
+
+
+
+<table id="costinformationTable">
+  <thead>
+    <tr>
+      <th colspan="3" align="center">Cost Information</th>
+    </tr>
+  </thead>
+  <tbody>
+
+<tr>
+      <td>At what level will you provide the cost for an item</td>
+      <td colspan="2" align="center">
+        <select name="itemlevelcost">
+  <option value="Chaincost">Chain</option>
+          <option value="Zonecost">Zone</option>
+          <option value="Storecost">Store</option>
+        </select>
+      </td>
+</tr>
+
+
+<tr>
+  <td>What is the data type for the field  that provides the level information</td>
+  <td colspan="2" align="center">
+    <input type="text" name="costfieldsMapping" id="costfieldsMapping">
+  </td>
+</tr>
+
+<tr>
+      <td>What is the cost  structure that you are following .(Will the cost  be sent for week,day,month,quarter?)</td>
+      <td colspan="2" align="center">
+        <select name="coststructure">
+  <option value="costweek">week</option>
+          <option value="costday">day</option>
+          <option value="costmonth">month</option>
+    <option value="costquarter">quarter</option>
+        </select>
+      </td>
+</tr>
+
+<tr>
+  <td>What is the date format provided for the cost effective date</td>
+  <td colspan="2" align="center">
+    <select name="costdateformat">
+      <option value="costMM/DD/YYYY">MM/DD/YYYY</option>
+      <option value="costMM/DD/yyyy HH24:mi:ss">MM/DD/yyyy HH24:mi:ss</option>
+	  <option value="costyyyy-MM-dd">yyyy-MM-dd</option>
+    </select>
+  </td>
+</tr>
+
+<tr>
+  <td>Does the feed contain unit cost?</td>
+  <td colspan="2" align="center">
+    <input type="radio" name="unitcost" value="Yes" id="unitcostYes">
+    <label for="unitcostYes">Yes</label>
+    <input type="radio" name="unitcost" value="No" id="unticostNo">
+    <label for="unticostNo">No</label>
+  </td>
+</tr>
+
+
+<tr>
+  <td>Which field provides the unit information?</td>
+  <td colspan="2" align="center">
+    <input type="text" name="costunitinformation" id="costunitinformation">
+  </td>
+</tr>
+
+<tr>
+  <td>Does the feed contain future cost?</td>
+  <td colspan="2" align="center">
+    <input type="radio" name="futurecost" value="Yes" id="futurecostYes">
+    <label for="futurecostYes">Yes</label>
+    <input type="radio" name="futurecost" value="No" id="futurecostNo">
+    <label for="futurecostNo">No</label>
+  </td>
+</tr>
+
+<tr>
+  <td>Which field provides the information for future cost</td>
+  <td colspan="2" align="center">
+    <input type="text" name="futurecostinfo" id="futurecostinfo">
+  </td>
+</tr>
+
+<tr>
+  <td>Cost for how many future weeks will you provide?</td>
+  <td colspan="2" align="center">
+    <select name="futureweekscost">
+      <option value="onecost">One</option>
+      <option value="twocost">Two</option>
+      <option value="threecost">Three</option>
+    </select>
+  </td>
+</tr>
+
+<tr>
+  <td>Do You provide Deal information in cost feed? If yes, how is the deal cost identified</td>
+  <td colspan="2" align="center">
+    <input type="radio" name="Dealinformation" value="Yes" id="DealinformationYes">
+    <label for="DealinformationYes">Yes</label>
+    <input type="radio" name="Dealinformation" value="No" id="DealinformationNo">
+    <label for="DealinformationNo">No</label>
+    <input type="text" name="DealinformationText" id="DealinformationText" style="display: none;">
+  </td>
+</tr>
+
+
+<tr>
+  <td>What additional information do you provide in the cost feed </td>
+  <td colspan="2" align="center">
+    <input type="text" name="additionalinformationcost" id="additionalinformationcost">
+  </td>
+</tr>
+
+<tr>
+  <td>What is the purpose of those fields?</td>
+  <td colspan="2" align="center">
+    <input type="text" name="purposeadditionalinformationcost" id="purposeadditionalinformationcost">
+  </td>
+</tr>
+</table>
+
+<table id="promoinformationTable">
+  <thead>
+    <tr>
+      <th colspan="3" align="center">Promotion Information</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td>Does your file have cost for only active items or all the items that you carry</td>
+      <td colspan="2" align="center">
+        <input type="radio" name="PromoactiveItems" value="Yes" id="PromoactiveitemsYes">
+        <label for="PromoactiveitemsYes">Yes</label>
+        <input type="radio" name="PromoactiveItems" value="No" id="PromoactiveitemsNo">
+        <label for="PromoactiveitemsNo">No</label>
+        <select name="Promoactiveitemsdropdown" style="display: none;">
+          <option value="Allitemspromo">All items</option>
+          <option value="Activeitemspromo">Active items</option>
+        </select>
+      </td>
+    </tr>
+    
+
+<tr>
+      <td>At what level will you provide the cost for an item</td>
+      <td colspan="2" align="center">
+        <select name="itemlevelpromo">
+		  <option value="Chainpromo">Chain</option>
+          <option value="Zonepromo">Zone</option>
+          <option value="Storepromo">Store</option>
+        </select>
+      </td>
+</tr>
+
+
+<tr>
+  <td>Do You provide Deal information in cost feed?</td>
+  <td colspan="2" align="center">
+    <input type="radio" name="Dealinformationpromo" value="Yes" id="DealinformationpromoYes">
+    <label for="DealinformationpromoYes">Yes</label>
+    <input type="radio" name="Dealinformationpromo" value="No" id="DealinformationpromoNo">
+    <label for="DealinformationpromoNo">No</label>
+    <input type="text" name="DealinformationpromoText" id="DealinformationpromoText" style="display: none;">
+  </td>
+</tr>
+
+<tr>
+  <td>Do you provide future cost?</td>
+  <td colspan="2" align="center">
+    <input type="radio" name="Promofuturecost" value="Yes" id="PromofuturecostYes">
+    <label for="PromofuturecostYes">Yes</label>
+    <input type="radio" name="Promofuturecost" value="No" id="PromofuturecostNo">
+    <label for="PromofuturecostNo">No</label>
+  </td>
+</tr>
+
+</table>
+
+
+    <script src="example.js"></script>
+    <script>
+      const fileRadio = document.getElementById("file");
+      const apiRadio = document.getElementById("api");
+      const itemFeedTable = document.getElementById("fileFormatTable");
+      const apiFormatTable = document.getElementById("apiFormatTable");
+      const productInformationTable = document.getElementById("productInformationTable");
+  
+      fileRadio.addEventListener("change", () => {
+  if (fileRadio.checked) {
+    // User selected File, so hide API format table and show the fileFormatTable
+    apiFormatTable.style.display = "none";
+    fileFormatTable.style.display = "table"; // or "block" based on your styling
+  }
+});
+
+apiRadio.addEventListener("change", () => {
+  if (apiRadio.checked) {
+    // User selected API, so hide Item Feed table and show the apiFormatTable
+    fileFormatTable.style.display = "none";
+    apiFormatTable.style.display = "table"; // or "block" based on your styling
+  }
+});
+ 
+const feedDropdown = document.getElementById("feed");
+    
+
+    // Function to hide all tables
+    function hideAllTables() {
+      itemFeedTable.style.display = "none";
+      fileFormatTable.style.display = "none";
+      apiFormatTable.style.display = "none";
+      productInformationTable.style.display = "none";
+    }
+
+    // Initial setup to hide all tables
+    hideAllTables();
+
+
+    // Function to show the selected table
+    function showSelectedTable() {
+      const selectedValue = feedDropdown.value;
+      hideAllTables();
+      if (selectedValue === "Item") {
+        itemFeedTable.style.display = "table"; // or "block" based on your styling
+        fileFormatTable.style.display = "table"; // or "block" based on your styling
+        apiFormatTable.style.display = "table"; // or "block" based on your styling
+        productInformationTable.style.display = "table";
+        storeinformationTable.style.display="none";
+        priceinformationTable.style.display="none";
+        costinformationTable.style.display="none";
+        promoinformationTable.style.display="none";
+      } else if (selectedValue === "Store") {
+        itemFeedTable.style.display = "table";
+        fileFormatTable.style.display = "table"; // or "block" based on your styling
+        apiFormatTable.style.display = "table"; // or "block" based on your styling
+        storeinformationTable.style.display="table";
+        productInformationTable.style.display = "none";
+        priceinformationTable.style.display="none";
+        costinformationTable.style.display="none";
+        promoinformationTable.style.display="none";
+      }else if (selectedValue === "Price") {
+        itemFeedTable.style.display = "table";
+        fileFormatTable.style.display = "table"; // or "block" based on your styling
+        apiFormatTable.style.display = "table"; // or "block" based on your styling
+        storeinformationTable.style.display="none";
+        productInformationTable.style.display = "none";
+        priceinformationTable.style.display="table";
+        costinformationTable.style.display="none";
+        promoinformationTable.style.display="none";
+      }
+      else if (selectedValue === "Cost") {
+        itemFeedTable.style.display = "table";
+        fileFormatTable.style.display = "table"; // or "block" based on your styling
+        apiFormatTable.style.display = "table"; // or "block" based on your styling
+        storeinformationTable.style.display="none";
+        productInformationTable.style.display = "none";
+        priceinformationTable.style.display="none";
+        costinformationTable.style.display="table";
+        promoinformationTable.style.display="none";
+      }
+      else if (selectedValue === "Promotion") {
+        itemFeedTable.style.display = "table";
+        fileFormatTable.style.display = "table"; // or "block" based on your styling
+        apiFormatTable.style.display = "table"; // or "block" based on your styling
+        storeinformationTable.style.display="none";
+        productInformationTable.style.display = "none";
+        priceinformationTable.style.display="none";
+        costinformationTable.style.display="none";
+        promoinformationTable.style.display="table";
+      }
+    }
+
+    
+
+    // Add event listener to the dropdown to show the selected table
+    feedDropdown.addEventListener("change", showSelectedTable);
+
+    // Initially, trigger the function to show the table based on the default selection
+    showSelectedTable();
+
+      // Get the radio buttons and the textbox element
+  const storeOpenDateYes = document.getElementById("storeOpenDateYes");
+  const storeOpenDateNo = document.getElementById("storeOpenDateNo");
+  const storeOpenDateFormat = document.getElementById("storeOpenDateFormat");
+  
+
+  
+  // Add an event listener to the "Yes" radio button
+  storeOpenDateYes.addEventListener("change", function () {
+    storeOpenDateFormat.style.display = this.checked ? "block" : "none";
+  });
+  storeOpenDateNo.addEventListener("change", function () {
+    storeOpenDateFormat.style.display = this.checked ? "none" : "none";
+  });
+
+  const storeCloseDateYes = document.getElementById("storeCloseDateYes");
+  const storeCloseDateNo = document.getElementById("storeCloseDateNo");
+  const storeCloseDateFormat = document.getElementById("storeCloseDateFormat");
+
+  storeCloseDateYes.addEventListener("change", function () {
+    storeCloseDateFormat.style.display = this.checked ? "block" : "none";
+  });
+  storeCloseDateNo.addEventListener("change", function () {
+    storeCloseDateFormat.style.display = this.checked ? "none" : "none";
+  });
+
+  const zipCodeYes = document.getElementById("zipCodeYes");
+  const zipCodeNo = document.getElementById("zipCodeNo");
+  const zipCodeFormat = document.getElementById("zipCodeFormat");
+
+  zipCodeYes.addEventListener("change", function () {
+  zipCodeFormat.style.display = this.checked ? "block" : "none";
+  });
+  zipCodeNo.addEventListener("change", function () {
+  zipCodeFormat.style.display = this.checked ? "none" : "none";
+  });
+
+  const cityNameProvidedYes = document.getElementById("cityNameYes");
+    const cityNameProvidedNo = document.getElementById("cityNameNo");
+    const cityNameFull = document.getElementById("cityNameFull");
+    const cityNameAbbreviated = document.getElementById("cityNameAbbreviated");
+    const cityFullName = document.getElementById("cityFullName");
+    const cityAbbreviatedName = document.getElementById("cityAbbreviatedName");
+    const cityNameAbbreviatedlabel = document.getElementById("cityNameAbbreviatedlabel");
+    const cityNameFulllabel = document.getElementById("cityNameFulllabel");
+    
+    
+
+    cityNameProvidedYes.addEventListener("change", function () {
+        cityNameFull.style.display = cityNameAbbreviated.style.display = this.checked ? "block" : "none";
+        cityNameFulllabel.style.display = cityNameAbbreviatedlabel.style.display = this.checked ? "block" : "none";
+        cityFullName.style.display = cityAbbreviatedName.style.display = "none"; // Hide textboxes
+    });
+
+    cityNameProvidedNo.addEventListener("change", function () {
+        cityNameFull.style.display = cityNameAbbreviated.style.display = "none"; // Hide labels
+        cityNameFulllabel.style.display = cityNameAbbreviatedlabel.style.display = "none";
+        cityFullName.style.display = cityAbbreviatedName.style.display = "none"; // Hide textboxes
+    });
+
+    cityNameFull.addEventListener("change", function () {
+        cityFullName.style.display = this.checked ? "block" : "none";
+        cityAbbreviatedName.style.display = "none"; // Hide the other textbox
+    });
+
+    cityNameAbbreviated.addEventListener("change", function () {
+        cityAbbreviatedName.style.display = this.checked ? "block" : "none";
+        cityFullName.style.display = "none"; // Hide the other textbox
+    });
+
+
+  
+
+    // Get the radio buttons and the dropdown
+  const divisionDetailsYes = document.getElementById("divisionDetailsYes");
+  const divisionDetailsNo = document.getElementById("divisionDetailsNo");
+  const divisionFormat = document.getElementById("divisionFormat");
+
+  // Add event listeners to the radio buttons
+  divisionDetailsYes.addEventListener("change", function () {
+    divisionFormat.style.display = this.checked ? "block" : "none";
+  });
+
+  divisionDetailsNo.addEventListener("change", function () {
+    divisionFormat.style.display = this.checked ? "none" : "none";
+  });
+
+
+  const districtDetailsYes = document.getElementById("districtDetailsYes");
+  const districtDetailsNo = document.getElementById("districtDetailsNo");
+  const districtFormat = document.getElementById("districtFormat");
+
+  districtDetailsYes.addEventListener("change", function () {
+    districtFormat.style.display = this.checked ? "block" : "none";
+  });
+
+  districtDetailsNo.addEventListener("change", function () {
+    districtFormat.style.display = this.checked ? "none" : "none";
+  });
+
+  
+  const regionDetailsYes = document.getElementById("regionDetailsYes");
+  const regionDetailsNo = document.getElementById("regionDetailsNo");
+  const regionFormat = document.getElementById("regionFormat");
+
+  regionDetailsYes.addEventListener("change", function () {
+    regionFormat.style.display = this.checked ? "block" : "none";
+  });
+
+  regionDetailsNo.addEventListener("change", function () {
+    regionFormat.style.display = this.checked ? "none" : "none";
+  });
+
+  const ClearanceormarkdownYes = document.getElementById("ClearanceormarkdownYes");
+  const ClearanceormarkdownNo = document.getElementById("ClearanceormarkdownNo");
+  const Clearanceormarkdowndrop = document.querySelector("select[name=Clearanceormarkdowndrop]");
+
+  ClearanceormarkdownYes.addEventListener("change", function () {
+  Clearanceormarkdowndrop.style.display = this.checked ? "block" : "none";
+  });
+
+  ClearanceormarkdownNo.addEventListener("change", function () {
+  Clearanceormarkdowndrop.style.display = this.checked ? "none" : "none";
+  });
+
+  const DealinformationYes = document.getElementById("DealinformationYes");
+const DealinformationNo = document.getElementById("DealinformationNo");
+const DealinformationText = document.getElementById("DealinformationText");
+
+DealinformationYes.addEventListener("change", function () {
+  DealinformationText.style.display = this.checked ? "block" : "none";
+});
+
+DealinformationNo.addEventListener("change", function () {
+  DealinformationText.style.display = this.checked ? "none" : "none";
+});
+
+  const PromoactiveitemsYes = document.getElementById("PromoactiveitemsYes");
+  const PromoactiveitemsNo = document.getElementById("PromoactiveitemsNo");
+  const Promoactiveitemsdropdown = document.querySelector("select[name=Promoactiveitemsdropdown]");
+
+  PromoactiveitemsYes.addEventListener("change", function () {
+    Promoactiveitemsdropdown.style.display = this.checked ? "block" : "none";
+  });
+
+  PromoactiveitemsNo.addEventListener("change", function () {
+    Promoactiveitemsdropdown.style.display = this.checked ? "none" : "none";
+  });
+
+const DealinformationpromoYes = document.getElementById("DealinformationpromoYes");
+const DealinformationpromoNo = document.getElementById("DealinformationpromoNo");
+const DealinformationpromoText = document.getElementById("DealinformationpromoText");
+
+DealinformationpromoYes.addEventListener("change", function () {
+  DealinformationpromoText.style.display = this.checked ? "block" : "none";
+});
+
+DealinformationpromoNo.addEventListener("change", function () {
+  DealinformationpromoText.style.display = this.checked ? "none" : "none";
+});
+
+
+
+    </script>
+    
+  </body>
+  
+</html>
